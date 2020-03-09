@@ -1,0 +1,114 @@
+<head>
+  <title>meteortest</title>
+  <!-- Compiled and minified CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+  />
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
+<body>
+  <nav class="red" style="margin-bottom: 20px;">
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo" style="padding-left:10px">Dashboard</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/list">List</a></li>
+        <li><a href="/analytics">Analytics</a></li>
+        <li><a href="/">Home</a></li>
+      </ul>
+    </div>
+  </nav>
+</body>
+
+<template name="note">
+  <div class="container">
+    <h1>List of Notes</h1>
+    {{> pageSearch}}
+    <table class="striped">
+      <thead>
+        <tr>
+          <th>C1</th>
+          <th>C2</th>
+          <th>C3</th>
+          <th>C4</th>
+          <th>C5</th>
+          <th>C6</th>
+          <th>C7</th>
+          <th>C8</th>
+          <th>C9</th>
+          <th>C10</th>
+          <th>ActiveIndicator</th>
+          <th>EffectiveDate</th>
+          <th>ExpiryDate</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each notes}}
+        <tr>
+          <td>{{C1}}</td>
+          <td>{{C2}}</td>
+          <td>{{C3}}</td>
+          <td>{{C4}}</td>
+          <td>{{C5}}</td>
+          <td>{{C6}}</td>
+          <td>{{C7}}</td>
+          <td>{{C8}}</td>
+          <td>{{C9}}</td>
+          <td>{{C10}}</td>
+          <td>{{ActiveIndicator}}</td>
+          <td>{{formatDate EffectiveDate}}</td>
+          <td>{{formatDate ExpiryDate}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</template>
+
+<template name="button">
+  <div class="center col s12 m4 l2">
+    <a id="generate-record" class="waves-effect waves-light btn">Generate Data</a>
+    <a id="reset-data" class="waves-effect waves-light btn">Reset Data</a>
+    <a id="delete-data" class="waves-effect waves-light btn">Delete Data</a>
+    <a id="expire-data" class="waves-effect waves-light btn">Expire Data</a>
+  </div>
+</template>
+
+<template name="analytics">
+  <div class="row">
+    <div class="col" id="chart">{{createChart}}</div>
+    <div class="col" id="lineChart">{{lineChart}}</div>
+  </div>
+</template>
+
+<template name="pageSearch">
+  <form id="pageSearchForm">
+    <div class="row">
+      <div class="input-field col s12">
+        <label for="page"
+          >Enter Page Number (Total Pages: {{totalPage}}, Rows per page: 10,
+          First Page Index: 1)</label
+        >
+      </div>
+      <div class="input-field col s8">
+        <input
+          id="page"
+          type="number"
+          required=""
+          aria-required="true"
+          class="validate"
+          min="1"
+          max="{{totalPage}}"
+          value="{{page}}"
+        />
+      </div>
+      <div class="input-field col s4">
+        <button class="btn waves-effect waves-light" type="submit">
+          Search
+        </button>
+      </div>
+    </div>
+  </form>
+</template>
