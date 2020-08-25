@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.7.6",
-    "highcharts": "^8.0.3",
+    "highcharts": "^8.1.1",
     "jquery": "^3.4.1",
     "meteor-node-stubs": "^1.0.0",
     "moment": "^2.24.0"
